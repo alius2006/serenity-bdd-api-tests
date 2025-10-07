@@ -1,0 +1,67 @@
+buildscript {
+    dependencies {
+        classpath "net.serenity-bdd:serenity-gradle-plugin:4.2.34"
+        classpath "net.serenity-bdd:serenity-single-page-report:4.2.34"
+    }
+}
+
+plugins {
+    id "net.serenity-bdd.serenity-gradle-plugin" version "4.2.34"
+    id 'java'
+}
+
+defaultTasks 'clean', 'test', 'aggregate', 'reports'
+
+group = 'io.github.alius2006'
+version = '1.0'
+
+java {
+    sourceCompatibility=25
+    targetCompatibility=25
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    serenityCoreVersion = '4.2.34'
+    junit5Version = '5.12.2'
+    junit5SuiteVersion = '1.12.2'
+    cucumberVersion = '7.22.2'
+    apacheHttpclientVersion = '5.4.4'
+    slf4jVersion = '2.0.17'
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'net.serenity-bdd.serenity-gradle-plugin'
+
+dependencies {
+    testImplementation "net.serenity-bdd:serenity-core:${serenityCoreVersion}"
+    testImplementation "net.serenity-bdd:serenity-cucumber:${serenityCoreVersion}"
+    testImplementation "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}"
+    testImplementation "net.serenity-bdd:serenity-ensure:${serenityCoreVersion}"
+    testImplementation "net.serenity-bdd:serenity-junit5:${serenityCoreVersion}"
+    testImplementation "net.serenity-bdd:serenity-screenplay-rest:${serenityCoreVersion}"
+    testImplementation "net.serenity-bdd:serenity-junit5:${serenityCoreVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:${junit5Version}"
+    testImplementation "org.junit.platform:junit-platform-suite-engine:${junit5SuiteVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter:${junit5Version}"
+    testImplementation "org.junit.platform:junit-platform-suite-api:${junit5SuiteVersion}"
+    testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-junit-platform-engine:${cucumberVersion}"
+    testImplementation "org.apache.httpcomponents.client5:httpclient5:${apacheHttpclientVersion}"
+    testImplementation "org.slf4j:slf4j-api:${slf4jVersion}"
+    testImplementation "ch.qos.logback:logback-classic:1.4.14"
+}
+
+test {
+    systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
+    systemProperty "cucumber.filter.name", System.properties["cucumber.filter.name"] ?: ".*"
+
+    systemProperty "log-root-level", System.getProperty("log-root-level")
+    systemProperty "environment", System.getProperty("environment")
+
+    useJUnitPlatform()
+}
