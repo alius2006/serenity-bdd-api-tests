@@ -5,17 +5,15 @@ import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 
-import java.util.List;
-
-public class Titles implements Question<List<String>> {
+public class TitleInTodo implements Question<String> {
 
     @Override
-    public List<String> answeredBy(Actor actor) {
+    public String answeredBy(Actor actor) {
         JsonNode response = SerenityRest.lastResponse().getBody().as(JsonNode.class);
-        return response.findValuesAsText("title");
+        return response.get("title").asText();
     }
 
-    public static Question<List<String>> titles() {
-        return new Titles();
+    public static Question<String> value() {
+        return new TitleInTodo();
     }
 }

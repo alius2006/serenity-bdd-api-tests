@@ -3,6 +3,7 @@ package io.github.alius2006.tests.todos.steps;
 import io.cucumber.java.en.Given;
 import io.github.alius2006.tests.todos.TodosCast;
 import io.github.alius2006.tests.todos.abilities.CallTodosApi;
+import io.github.alius2006.tests.todos.abilities.RememberId;
 import net.serenitybdd.screenplay.actors.Cast;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.Stage;
@@ -17,7 +18,8 @@ public class ClientSteps {
     public void aClientHasAccessToTheTestAPI() {
         Cast todosClient = new Cast();
         todosClient.actorNamed(TodosCast.TODOS_CLIENT)
-                .can(CallTodosApi.canCallTheApi());
+                .can(CallTodosApi.canCallTheApi())
+                .can(RememberId.canRemember());
 
         OnStage.setTheStage(new Stage(todosClient));
 
