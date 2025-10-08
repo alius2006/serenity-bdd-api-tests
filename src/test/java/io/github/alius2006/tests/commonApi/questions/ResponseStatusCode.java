@@ -1,4 +1,4 @@
-package io.github.alius2006.tests.todos.questions;
+package io.github.alius2006.tests.commonApi.questions;
 
 import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.Actor;

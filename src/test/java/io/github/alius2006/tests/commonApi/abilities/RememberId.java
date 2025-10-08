@@ -1,4 +1,4 @@
-package io.github.alius2006.tests.todos.abilities;
+package io.github.alius2006.tests.commonApi.abilities;
 
 import net.serenitybdd.screenplay.Ability;
 import net.serenitybdd.screenplay.Actor;

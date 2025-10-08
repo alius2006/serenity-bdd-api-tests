@@ -2,9 +2,9 @@ package io.github.alius2006.tests.todos.steps;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.alius2006.tests.todos.abilities.RememberId;
-import io.github.alius2006.tests.todos.questions.IdInTodo;
-import io.github.alius2006.tests.todos.questions.ResponseStatusCode;
+import io.github.alius2006.tests.commonApi.abilities.RememberId;
+import io.github.alius2006.tests.commonApi.questions.Id;
+import io.github.alius2006.tests.commonApi.questions.ResponseStatusCode;
 import io.github.alius2006.tests.todos.questions.TitleInTodo;
 import io.github.alius2006.tests.todos.questions.TitlesInListOfTodos;
 import io.github.alius2006.tests.todos.tasks.GetListOfTodos;
@@ -54,7 +54,7 @@ public class TodosSteps {
                         ResponseStatusCode.value(),
                         is(equalTo(200))),
                 seeThat("The id in the response equals the given id",
-                        IdInTodo.value(),
+                        Id.value(),
                         is(equalTo(id))),
                 seeThat("The title in the response equals the expected title",
                         TitleInTodo.value(),

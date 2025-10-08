@@ -1,7 +1,7 @@
 Feature: TODOs
 
   Background:
-    Given a client has access to the Todos API
+    Given a client has access to the TODOs API
 
   Scenario: TODOs T1 List TODOs
     When the client requests a list of TODOs

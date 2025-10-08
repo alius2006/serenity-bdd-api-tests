@@ -1,11 +1,11 @@
-package io.github.alius2006.tests.todos.questions;
+package io.github.alius2006.tests.commonApi.questions;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 
-public class IdInTodo implements Question<Integer> {
+public class Id implements Question<Integer> {
 
     @Override
     public Integer answeredBy(Actor actor) {
@@ -13,6 +13,6 @@ public class IdInTodo implements Question<Integer> {
     }
 
     public static Question<Integer> value() {
-        return new IdInTodo();
+        return new Id();
     }
 }
